@@ -13,8 +13,8 @@ texture = SubResource("PlaceholderTexture2D_nmce2")
 centered = false
 
 [node name="PlaceBuildingButton" type="Button" parent="."]
-offset_left = 5.0
-offset_top = 610.0
-offset_right = 122.0
-offset_bottom = 641.0
+offset_left = 6.0
+offset_top = 681.0
+offset_right = 123.0
+offset_bottom = 712.0
 text = "Place Building"
