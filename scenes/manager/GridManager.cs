@@ -9,6 +9,8 @@ namespace Game.Manager;
 
 public partial class GridManager : Node
 {
+	private const string IS_BUILDABLE = "is_buildable";
+	private const string IS_WOOD = "is_wood";
 	private HashSet<Vector2I> validBuildableTiles = new();
 
 	[Export]
@@ -30,9 +32,21 @@ public partial class GridManager : Node
 		{
 			var customData = layer.GetCellTileData(tilePosition);
 			if (customData == null) continue;
-			return (bool)customData.GetCustomData("buildable");
+			return (bool)customData.GetCustomData(IS_BUILDABLE);
 		}
 		return false;
+	}
+
+	public bool IsTilePositionResource(Vector2I tilePosition)
+	{
+		foreach (var layer in allTileMapLayers)
+		{
+			var customData = layer.GetCellTileData(tilePosition);
+			if (customData == null) continue;
+			return (bool)customData.GetCustomData(IS_WOOD);
+		}
+		return false;
+
 	}
 
 	public bool IsTilePositionBuildable(Vector2I tilePosition)
@@ -50,13 +64,22 @@ public partial class GridManager : Node
 
 	public void HighlightExpandedBuildableTiles(Vector2I rootCell, int radius)
 	{
-		ClearHighLlightedTiles();
 		HighlightBuildableTiles();
 
 		var validTiles = GetValidTilesInRadius(rootCell, radius).ToHashSet();
 		var expandedTiles = validTiles.Except(validBuildableTiles).Except(GetOccupiedTiles());
 		var atlasCoords = new Vector2I(1, 0);
 		foreach (var tilePosition in expandedTiles)
+		{
+			highlightTileMapLayer.SetCell(tilePosition, 0, atlasCoords);
+		}
+	}
+
+	public void HighlightResourceTiles(Vector2I rootCell, int radius)
+	{
+		var resourceTiles = GetResourceTilesInRadius(rootCell, radius);
+		var atlasCoords = new Vector2I(1, 0);
+		foreach (var tilePosition in resourceTiles)
 		{
 			highlightTileMapLayer.SetCell(tilePosition, 0, atlasCoords);
 		}
@@ -109,6 +132,22 @@ public partial class GridManager : Node
 			{
 				var tilePosition = new Vector2I(x, y);
 				if (!IsTilePositionValid(tilePosition)) continue;
+				result.Add(tilePosition);
+			}
+		}
+		return result;
+	}
+
+	private List<Vector2I> GetResourceTilesInRadius(Vector2I rootCell, int radius)
+	{
+		var result = new List<Vector2I>();
+
+		for (var x = rootCell.X - radius; x <= rootCell.X + radius; x++)
+		{
+			for (var y = rootCell.Y - radius; y <= rootCell.Y + radius; y++)
+			{
+				var tilePosition = new Vector2I(x, y);
+				if (!IsTilePositionResource(tilePosition)) continue;
 				result.Add(tilePosition);
 			}
 		}
