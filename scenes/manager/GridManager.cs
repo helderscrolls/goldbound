@@ -12,12 +12,14 @@ public partial class GridManager : Node
 	[Export]
 	private TileMapLayer baseTerrainTileMapLayer;
 
-	public override void _Ready()
-	{
-	}
-
 	public bool IsTilePositionValid(Vector2 tilePosition)
 	{
+		var tilePositionInt = new Vector2I((int)tilePosition.X, (int)tilePosition.Y);
+		var customData = baseTerrainTileMapLayer.GetCellTileData(tilePositionInt);
+		if (customData == null) return false;
+		if (!(bool)customData.GetCustomData("buildable")) return false;
+
+
 		return !occupiedCells.Contains(tilePosition);
 	}
 
