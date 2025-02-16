@@ -21,7 +21,7 @@ tile_map_data = PackedByteArray("AAAKAAEAAAAGAAAAAAAJAAEAAAAGAAAAAAAIAAEAAAAGAAA
 tile_set = ExtResource("2_q0chx")
 
 [node name="ResourceTileMapLayer" type="TileMapLayer" parent="BaseTerrainTileMapLayer"]
-tile_map_data = PackedByteArray("AAAJAAMAAQAAAAAAAAAKAAIAAQAAAAAAAAAJAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAALAAIAAQAAAAAAAAAHAAEAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAJAAMAAQAAAAAAAAAKAAIAAQAAAAAAAAAJAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAALAAIAAQAAAAAAAAAHAAEAAQAAAAAAAAAKAAMAAQAAAAAAAAA=")
 tile_set = ExtResource("2_q0chx")
 
 [node name="HighlightTileMapLayer" type="TileMapLayer" parent="."]
