@@ -1,8 +1,10 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://b3jirlxvvco4i"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://b3jirlxvvco4i"]
 
 [ext_resource type="Texture2D" uid="uid://bla8ciwl3ajmn" path="res://assets/tiles/tilemap_flat.png" id="1_ww3t8"]
 [ext_resource type="Texture2D" uid="uid://ukeon6dl7vk2" path="res://assets/tiles/tree.png" id="2_jnllg"]
 [ext_resource type="Texture2D" uid="uid://ewccf50og0qi" path="res://assets/tiles/tilemap_elevation.png" id="3_tdcp5"]
+[ext_resource type="Texture2D" uid="uid://dvv0g0ryl2r71" path="res://assets/tiles/water.png" id="4_3ffbb"]
+[ext_resource type="Texture2D" uid="uid://cnduic3yxh8ar" path="res://assets/tiles/foam.png" id="5_ncn23"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dkh57"]
 texture = ExtResource("1_ww3t8")
@@ -289,6 +291,26 @@ texture_region_size = Vector2i(64, 64)
 1:5/0 = 0
 0:5/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5tfl"]
+texture = ExtResource("4_3ffbb")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwypf"]
+texture = ExtResource("5_ncn23")
+texture_region_size = Vector2i(192, 192)
+0:0/animation_columns = 8
+0:0/animation_mode = 1
+0:0/animation_frame_0/duration = 0.15
+0:0/animation_frame_1/duration = 0.15
+0:0/animation_frame_2/duration = 0.15
+0:0/animation_frame_3/duration = 0.15
+0:0/animation_frame_4/duration = 0.15
+0:0/animation_frame_5/duration = 0.15
+0:0/animation_frame_6/duration = 0.15
+0:0/animation_frame_7/duration = 0.15
+0:0/0 = 0
+
 [resource]
 tile_size = Vector2i(64, 64)
 terrain_set_0/mode = 2
@@ -305,3 +327,5 @@ custom_data_layer_1/type = 1
 sources/0 = SubResource("TileSetAtlasSource_dkh57")
 sources/1 = SubResource("TileSetAtlasSource_pjdvs")
 sources/2 = SubResource("TileSetAtlasSource_c25ib")
+sources/3 = SubResource("TileSetAtlasSource_k5tfl")
+sources/4 = SubResource("TileSetAtlasSource_vwypf")
