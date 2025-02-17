@@ -7,6 +7,9 @@ namespace Game.Manager;
 
 public partial class BuildingManager : Node
 {
+	private readonly StringName ACTION_LEFT_CLICK = "left_click";
+	private readonly StringName ACTION_CANCEL = "cancel";
+
 	[Export]
 	private GridManager gridManager;
 	[Export]
@@ -35,14 +38,14 @@ public partial class BuildingManager : Node
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if (@event.IsActionPressed("cancel"))
+		if (@event.IsActionPressed(ACTION_CANCEL))
 		{
 			ClearBuildingGhost();
 		}
 		else if (
 			hoveredGridCell.HasValue &&
 			toPlaceBuildingResource != null &&
-			@event.IsActionPressed("left_click") &&
+			@event.IsActionPressed(ACTION_LEFT_CLICK) &&
 			IsBuildingPlaceableAtTile(hoveredGridCell.Value)
 		)
 		{
