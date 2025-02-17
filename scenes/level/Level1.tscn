@@ -38,11 +38,11 @@ tile_set = ExtResource("2_qn88c")
 
 [node name="TreeLayer" type="TileMapLayer" parent="YSortRoot/BaseTerrainTileMapLayer" index="6"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAJAAYAAQAAAAAAAAAIAAcAAQAAAAAAAAAHAAYAAQAAAAAAAAAJAAcAAQAAAAAAAAAJAAgAAQAAAAAAAAAHAAgAAQAAAAAAAAANAAsAAQAAAAAAAAAOAAoAAQAAAAAAAAAMAAoAAQAAAAAAAAAOAAUAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAJAAYAAQAAAAAAAAAIAAcAAQAAAAAAAAAHAAYAAQAAAAAAAAAJAAcAAQAAAAAAAAAJAAgAAQAAAAAAAAAHAAgAAQAAAAAAAAANAAsAAQAAAAAAAAAOAAoAAQAAAAAAAAAMAAoAAQAAAAAAAAAOAAUAAQAAAAAAAAAFAAoAAQAAAAAAAAA=")
 tile_set = ExtResource("2_qn88c")
 
 [node name="Base" parent="YSortRoot" index="1"]
-position = Vector2(192, 512)
+position = Vector2(0, 512)
 
 [node name="GoldMine" parent="YSortRoot" index="2"]
 position = Vector2(832, 384)
