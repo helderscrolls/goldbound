@@ -20,7 +20,8 @@ gameUI = NodePath("../GameUI")
 ySortRoot = NodePath("../YSortRoot")
 buildingGhostScene = ExtResource("8_cvat4")
 
-[node name="GameUI" parent="." instance=ExtResource("6_w1dl0")]
+[node name="GameUI" parent="." node_paths=PackedStringArray("buildingManager") instance=ExtResource("6_w1dl0")]
+buildingManager = NodePath("../BuildingManager")
 
 [node name="GridManager" parent="." node_paths=PackedStringArray("highlightTileMapLayer", "baseTerrainTileMapLayer") instance=ExtResource("2_ml6gn")]
 highlightTileMapLayer = NodePath("../HighlightTileMapLayer")
