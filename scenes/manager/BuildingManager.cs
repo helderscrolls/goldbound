@@ -1,3 +1,4 @@
+using Game.Building;
 using Game.Resources.Building;
 using Game.UI;
 using Godot;
@@ -21,7 +22,7 @@ public partial class BuildingManager : Node
 	private int currentlyUsedResourceCount;
 	private BuildingResource toPlaceBuildingResource;
 	private Vector2I? hoveredGridCell;
-	private Node2D buildingGhost;
+	private BuildingGhost buildingGhost;
 
 	private int AvailableResourceCount => startingResourceCount + currentResourceCount - currentlyUsedResourceCount;
 
@@ -54,13 +55,25 @@ public partial class BuildingManager : Node
 		if (toPlaceBuildingResource != null && (!hoveredGridCell.HasValue || hoveredGridCell.Value != gridPosition))
 		{
 			hoveredGridCell = gridPosition;
-			gridManager.ClearHighLlightedTiles();
-			gridManager.HighlightBuildableTiles();
-			if (IsBuildingPlaceableAtTile(hoveredGridCell.Value))
-			{
-				gridManager.HighlightExpandedBuildableTiles(hoveredGridCell.Value, toPlaceBuildingResource.BuildableRadius);
-				gridManager.HighlightResourceTiles(hoveredGridCell.Value, toPlaceBuildingResource.ResourceRadius);
-			}
+			UpdateGridDisplay();
+		}
+	}
+
+	private void UpdateGridDisplay()
+	{
+		if (hoveredGridCell == null) return;
+
+		gridManager.ClearHighLlightedTiles();
+		gridManager.HighlightBuildableTiles();
+		if (IsBuildingPlaceableAtTile(hoveredGridCell.Value))
+		{
+			gridManager.HighlightExpandedBuildableTiles(hoveredGridCell.Value, toPlaceBuildingResource.BuildableRadius);
+			gridManager.HighlightResourceTiles(hoveredGridCell.Value, toPlaceBuildingResource.ResourceRadius);
+			buildingGhost.SetValid();
+		}
+		else
+		{
+			buildingGhost.SetInvalid();
 		}
 	}
 
@@ -99,14 +112,14 @@ public partial class BuildingManager : Node
 			buildingGhost.QueueFree();
 		}
 
-		buildingGhost = buildingGhostScene.Instantiate<Node2D>();
+		buildingGhost = buildingGhostScene.Instantiate<BuildingGhost>();
 		ySortRoot.AddChild(buildingGhost);
 
 		var buildingSprite = buildingResource.SpriteScene.Instantiate<Sprite2D>();
 		buildingGhost.AddChild(buildingSprite);
 
 		toPlaceBuildingResource = buildingResource;
-		gridManager.HighlightBuildableTiles();
+		UpdateGridDisplay();
 	}
 
 }
