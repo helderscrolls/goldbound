@@ -18,8 +18,11 @@ public partial class BuildingManager : Node
 
 	private int currentResourceCount;
 	private int startingResourceCount = 4;
+	private int currentlyUsedResourceCount;
 	private BuildingResource toPlaceBuildingResource;
 	private Vector2I? hoveredGridCell;
+
+	private int AvailableResourceCount => startingResourceCount + currentResourceCount - currentlyUsedResourceCount;
 
 
 	public override void _Ready()
@@ -30,7 +33,13 @@ public partial class BuildingManager : Node
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if (hoveredGridCell.HasValue && @event.IsActionPressed("left_click") && gridManager.IsTilePositionBuildable(hoveredGridCell.Value))
+		if (
+			hoveredGridCell.HasValue &&
+			toPlaceBuildingResource != null &&
+			@event.IsActionPressed("left_click") &&
+			gridManager.IsTilePositionBuildable(hoveredGridCell.Value) &&
+			AvailableResourceCount >= toPlaceBuildingResource.ResourceCost
+		)
 		{
 			PlaceBuildingAtHoveredCellPosition();
 			cursor.Visible = false;
@@ -61,6 +70,9 @@ public partial class BuildingManager : Node
 
 		hoveredGridCell = null;
 		gridManager.ClearHighLlightedTiles();
+
+		currentlyUsedResourceCount += toPlaceBuildingResource.ResourceCost;
+		GD.Print(AvailableResourceCount);
 	}
 
 	private void OnResourceTilesUpdated(int resourceCount)
