@@ -25,7 +25,7 @@ tile_set = ExtResource("2_qn88c")
 
 [node name="TreeLayer" type="TileMapLayer" parent="YSortRoot/BaseTerrainTileMapLayer" index="4"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAJAAYAAQAAAAAAAAAIAAcAAQAAAAAAAAAHAAYAAQAAAAAAAAAJAAcAAQAAAAAAAAAJAAgAAQAAAAAAAAAHAAgAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAJAAYAAQAAAAAAAAAIAAcAAQAAAAAAAAAHAAYAAQAAAAAAAAAJAAcAAQAAAAAAAAAJAAgAAQAAAAAAAAAHAAgAAQAAAAAAAAANAAsAAQAAAAAAAAAOAAoAAQAAAAAAAAAMAAoAAQAAAAAAAAAOAAUAAQAAAAAAAAA=")
 tile_set = ExtResource("2_qn88c")
 
 [node name="Base" parent="YSortRoot" index="1"]
