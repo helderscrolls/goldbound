@@ -131,7 +131,10 @@ public partial class BuildingManager : Node
 	{
 		var rootCell = hoveredGridArea.Position;
 		var buildingComponent = GetTree().GetNodesInGroup(nameof(BuildingComponent)).Cast<BuildingComponent>()
-			.FirstOrDefault((buildingComponent) => buildingComponent.GetGridCellPosition() == rootCell);
+			.FirstOrDefault((buildingComponent) =>
+			{
+				return buildingComponent.BuildingResource.IsDeletable && buildingComponent.GetGridCellPosition() == rootCell;
+			});
 
 		if (buildingComponent == null) return;
 
