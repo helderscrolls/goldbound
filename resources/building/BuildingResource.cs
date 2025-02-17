@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using Godot;
 
 namespace Game.Resources.Building;
@@ -15,4 +16,6 @@ public partial class BuildingResource : Resource
 	public int ResourceRadius { get; private set; }
 	[Export]
 	public PackedScene BuildingScene { get; private set; }
+	[Export]
+	public PackedScene SpriteScene { get; private set; }
 }

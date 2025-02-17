@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://yk1mkrcnwqh0"]
+
+[ext_resource type="Texture2D" uid="uid://bdjmyutmbphku" path="res://assets/buildings/tower_blue.png" id="1_d2ysy"]
+
+[node name="TowerSprite2D" type="Sprite2D"]
+position = Vector2(32, 32)
+texture = ExtResource("1_d2ysy")
+centered = false
+offset = Vector2(-64, -204)
