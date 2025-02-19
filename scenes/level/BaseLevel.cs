@@ -7,6 +7,9 @@ namespace Game;
 
 public partial class BaseLevel : Node
 {
+	[Export]
+	private PackedScene levelCompleteScreenScene;
+
 	private GridManager gridManager;
 	private GoldMine goldMine;
 	private GameCamera gameCamera;
@@ -32,8 +35,9 @@ public partial class BaseLevel : Node
 		var goldMineTilePosition = gridManager.ConvertWorldPositionToTilePosition(goldMine.GlobalPosition);
 		if (gridManager.IsTilePositionBuildable(goldMineTilePosition))
 		{
+			var levelCompleteScreen = levelCompleteScreenScene.Instantiate<LevelCompleteScreen>();
+			AddChild(levelCompleteScreen);
 			goldMine.SetActive();
-			GD.Print("Win!");
 		}
 	}
 }
