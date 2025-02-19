@@ -32,4 +32,9 @@ public partial class GameCamera : Camera2D
 	{
 		GlobalPosition = position;
 	}
+
+	public void LockCamera()
+	{
+		ProcessMode = ProcessModeEnum.Disabled;
+	}
 }

@@ -41,6 +41,7 @@ public partial class BaseLevel : Node
 			AddChild(levelCompleteScreen);
 			goldMine.SetActive();
 			gameUI.HideUI();
+			gameCamera.LockCamera();
 		}
 	}
 }
