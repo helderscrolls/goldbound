@@ -15,6 +15,7 @@ public partial class BaseLevel : Node
 	private GameCamera gameCamera;
 	private Node2D baseBuilding;
 	private TileMapLayer baseTerrainTileMapLayer;
+	private GameUI gameUI;
 
 	public override void _Ready()
 	{
@@ -23,6 +24,7 @@ public partial class BaseLevel : Node
 		gameCamera = GetNode<GameCamera>("GameCamera");
 		baseTerrainTileMapLayer = GetNode<TileMapLayer>("%BaseTerrainTileMapLayer");
 		baseBuilding = GetNode<Node2D>("%Base");
+		gameUI = GetNode<GameUI>("GameUI");
 
 		gameCamera.SetBoundingRect(baseTerrainTileMapLayer.GetUsedRect());
 		gameCamera.CenterOnPosition(baseBuilding.GlobalPosition);
@@ -38,6 +40,7 @@ public partial class BaseLevel : Node
 			var levelCompleteScreen = levelCompleteScreenScene.Instantiate<LevelCompleteScreen>();
 			AddChild(levelCompleteScreen);
 			goldMine.SetActive();
+			gameUI.HideUI();
 		}
 	}
 }
