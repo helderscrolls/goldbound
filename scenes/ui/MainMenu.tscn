@@ -9,6 +9,9 @@
 
 [node name="MainMenu" type="Node"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 320)
+
 [node name="YSortRoot" type="Node2D" parent="."]
 y_sort_enabled = true
 
