@@ -9,6 +9,8 @@ public partial class LevelManager : Node
 	[Export]
 	private PackedScene[] levelScenes;
 
+	private int currentLevelIndex;
+
 	public override void _Notification(int what)
 	{
 		if (what == NotificationSceneInstantiated)
@@ -21,7 +23,14 @@ public partial class LevelManager : Node
 	{
 		if (levelIndex >= levelScenes.Length || levelIndex < 0) return;
 
-		var levelScene = levelScenes[levelIndex];
+		currentLevelIndex = levelIndex;
+
+		var levelScene = levelScenes[currentLevelIndex];
 		GetTree().ChangeSceneToPacked(levelScene);
+	}
+
+	public void ChangeToNextLevel()
+	{
+		ChangeToLevel(currentLevelIndex + 1);
 	}
 }
