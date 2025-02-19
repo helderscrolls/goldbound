@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://tqjb3huw7ygf"]
+[gd_scene load_steps=8 format=4 uid="uid://tqjb3huw7ygf"]
 
+[ext_resource type="Script" path="res://scenes/ui/MainMenu.cs" id="1_272wf"]
 [ext_resource type="TileSet" uid="uid://b3jirlxvvco4i" path="res://resources/tiles.tres" id="2_e5sw5"]
 [ext_resource type="PackedScene" uid="uid://c43tkvcr38dyc" path="res://scenes/level/util/ElevationLayer.tscn" id="2_oui16"]
 [ext_resource type="PackedScene" uid="uid://dyfh404fch4ck" path="res://scenes/building/Base.tscn" id="3_5ko3g"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://co6b74x024vf7" path="res://scenes/building/Tower.tscn" id="6_fvhub"]
 
 [node name="MainMenu" type="Node"]
+script = ExtResource("1_272wf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 320)
@@ -95,15 +97,16 @@ custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Play"
 
-[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Options"
 
-[node name="Button3" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
