@@ -18,8 +18,6 @@ public partial class BuildingManager : Node
 	public delegate void AvailableResourceCountChangedEventHandler(int availableResourceCount);
 
 	[Export]
-	private int startingResourceCount = 4;
-	[Export]
 	private GridManager gridManager;
 	[Export]
 	private GameUI gameUI;
@@ -34,6 +32,7 @@ public partial class BuildingManager : Node
 		PlacingBuilding
 	}
 
+	private int startingResourceCount;
 	private int currentResourceCount;
 	private int currentlyUsedResourceCount;
 	private BuildingResource toPlaceBuildingResource;
@@ -102,6 +101,11 @@ public partial class BuildingManager : Node
 			default:
 				break;
 		}
+	}
+
+	public void SetStartingResourceCount(int count)
+	{
+		startingResourceCount = count;
 	}
 
 	private void UpdateGridDisplay()

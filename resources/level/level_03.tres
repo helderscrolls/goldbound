@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelDefinitionResource" load_steps=2 format=3 uid="uid://bww3iosohwc6t"]
+
+[ext_resource type="Script" path="res://resources/level/LevelDefinitionResource.cs" id="1_xb6yk"]
+
+[resource]
+script = ExtResource("1_xb6yk")
+Id = "bridges_everywhere"
+StartingResourceCount = 4
+LevelScenePath = "res://scenes/level/Level3.tscn"
