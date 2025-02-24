@@ -20,7 +20,7 @@ public partial class LevelSelectSection : PanelContainer
 		resourceCountLabel = GetNode<Label>("%ResourceCountLabel");
 		levelNumberLabel = GetNode<Label>("%LevelNumberLabel");
 
-		button.Pressed += OnButtonPressed;
+		button.Connect(Button.SignalName.Pressed, Callable.From(OnButtonPressed));
 	}
 
 	public void SetLevelDefinition(LevelDefinitionResource levelDefinition)

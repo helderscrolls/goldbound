@@ -23,7 +23,8 @@ public partial class LevelSelectScreen : MarginContainer
 
 			levelSelectSection.SetLevelDefinition(levelDefinition);
 			levelSelectSection.SetLevelIndex(i);
-			levelSelectSection.LevelSelected += OnLevelSelected;
+
+			levelSelectSection.Connect(LevelSelectSection.SignalName.LevelSelected, Callable.From<int>(OnLevelSelected));
 		}
 	}
 
