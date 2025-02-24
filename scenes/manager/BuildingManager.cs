@@ -45,8 +45,8 @@ public partial class BuildingManager : Node
 
 	public override void _Ready()
 	{
-		gridManager.ResourceTilesUpdated += OnResourceTilesUpdated;
-		gameUI.BuildingResourceSelected += OnBuildingResourceSelected;
+		gridManager.Connect(GridManager.SignalName.ResourceTilesUpdated, Callable.From<int>(OnResourceTilesUpdated));
+		gameUI.Connect(GameUI.SignalName.BuildingResourceSelected, Callable.From<BuildingResource>(OnBuildingResourceSelected));
 
 		Callable.From(() => EmitSignal(SignalName.AvailableResourceCountChanged, AvailableResourceCount)).CallDeferred();
 	}

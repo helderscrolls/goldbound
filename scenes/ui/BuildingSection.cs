@@ -20,7 +20,7 @@ public partial class BuildingSection : PanelContainer
 		costLabel = GetNode<Label>("%CostLabel");
 		selectButton = GetNode<Button>("%Button");
 
-		selectButton.Pressed += OnSelectButtonPressed;
+		selectButton.Connect(Button.SignalName.Pressed, Callable.From(OnSelectButtonPressed));
 	}
 
 	public void SetBuildingResource(BuildingResource buildingResource)

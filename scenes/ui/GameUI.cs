@@ -25,7 +25,7 @@ public partial class GameUI : CanvasLayer
 		resourceLabel = GetNode<Label>("%ResourceLabel");
 		CreateBuildingSections();
 
-		buildingManager.AvailableResourceCountChanged += OnAvailableResourceCountChanged;
+		buildingManager.Connect(BuildingManager.SignalName.AvailableResourceCountChanged, Callable.From<int>(OnAvailableResourceCountChanged));
 	}
 
 	public void HideUI()
@@ -41,10 +41,10 @@ public partial class GameUI : CanvasLayer
 			buildingSectionContainer.AddChild(buildingSection);
 			buildingSection.SetBuildingResource(buildingResource);
 
-			buildingSection.SelectButtonPressed += () =>
+			buildingSection.Connect(BuildingSection.SignalName.SelectButtonPressed, Callable.From(() =>
 			{
 				EmitSignal(SignalName.BuildingResourceSelected, buildingResource);
-			};
+			}));
 		}
 	}
 

@@ -36,7 +36,7 @@ public partial class BaseLevel : Node
 		gameCamera.SetBoundingRect(baseTerrainTileMapLayer.GetUsedRect());
 		gameCamera.CenterOnPosition(baseBuilding.GlobalPosition);
 
-		gridManager.GridStateUpdated += OnGridStateUpdated;
+		gridManager.Connect(GridManager.SignalName.GridStateUpdated, Callable.From(OnGridStateUpdated));
 	}
 
 	private void OnGridStateUpdated()

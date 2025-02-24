@@ -11,7 +11,7 @@ public partial class MainMenu : Node
 	{
 		playButton = GetNode<Button>("%PlayButton");
 
-		playButton.Pressed += OnPlayButtonPressed;
+		playButton.Connect(Button.SignalName.Pressed, Callable.From(OnPlayButtonPressed));
 	}
 
 	private void OnPlayButtonPressed()
