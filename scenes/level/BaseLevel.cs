@@ -35,7 +35,7 @@ public partial class BaseLevel : Node
 	private void OnGridStateUpdated()
 	{
 		var goldMineTilePosition = gridManager.ConvertWorldPositionToTilePosition(goldMine.GlobalPosition);
-		if (gridManager.IsTilePositionBuildable(goldMineTilePosition))
+		if (gridManager.IsTilePositionInAnyBuildingRadius(goldMineTilePosition))
 		{
 			var levelCompleteScreen = levelCompleteScreenScene.Instantiate<LevelCompleteScreen>();
 			AddChild(levelCompleteScreen);
