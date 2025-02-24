@@ -9,6 +9,7 @@ public partial class BuildingGhost : Node2D
 	private Node2D topRight;
 	private Node2D bottomRight;
 	private Node2D spriteRoot;
+	private Node2D upDownRoot;
 
 	private Tween spriteTween;
 
@@ -19,18 +20,30 @@ public partial class BuildingGhost : Node2D
 		topRight = GetNode<Node2D>("TopRight");
 		bottomRight = GetNode<Node2D>("BottomRight");
 		spriteRoot = GetNode<Node2D>("SpriteRoot");
+		upDownRoot = GetNode<Node2D>("%UpDownRoot");
+
+		var upDownTween = CreateTween();
+		upDownTween.SetLoops(0);
+		upDownTween
+			.TweenProperty(upDownRoot, "position", Vector2.Down * 6, .3)
+			.SetTrans(Tween.TransitionType.Quad)
+			.SetEase(Tween.EaseType.InOut);
+		upDownTween
+			.TweenProperty(upDownRoot, "position", Vector2.Up * 6, .3)
+			.SetTrans(Tween.TransitionType.Quad)
+			.SetEase(Tween.EaseType.InOut);
 	}
 
 	public void SetInvalid()
 	{
 		Modulate = Colors.Red;
-		spriteRoot.Modulate = Modulate;
+		upDownRoot.Modulate = Modulate;
 	}
 
 	public void SetValid()
 	{
 		Modulate = Colors.White;
-		spriteRoot.Modulate = Modulate;
+		upDownRoot.Modulate = Modulate;
 	}
 
 	public void SetDimensions(Vector2I dimensions)
@@ -42,7 +55,7 @@ public partial class BuildingGhost : Node2D
 
 	public void AddSpriteNode(Node2D spriteNode)
 	{
-		spriteRoot.AddChild(spriteNode);
+		upDownRoot.AddChild(spriteNode);
 	}
 
 	public void DoHoverAnimation()

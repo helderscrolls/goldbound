@@ -165,3 +165,6 @@ offset = Vector2(-34, -30)
 [node name="SpriteRoot" type="Node2D" parent="."]
 top_level = true
 y_sort_enabled = true
+
+[node name="UpDownRoot" type="Node2D" parent="SpriteRoot"]
+unique_name_in_owner = true
