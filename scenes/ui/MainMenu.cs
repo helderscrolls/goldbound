@@ -19,6 +19,7 @@ public partial class MainMenu : Node
 		mainMenuContainer.Visible = true;
 
 		playButton.Connect(Button.SignalName.Pressed, Callable.From(OnPlayButtonPressed));
+		levelSelectScreen.Connect(LevelSelectScreen.SignalName.BackPressed, Callable.From(OnLevelSelectBackPressed));
 	}
 
 	private void OnPlayButtonPressed()
@@ -27,4 +28,9 @@ public partial class MainMenu : Node
 		levelSelectScreen.Visible = true;
 	}
 
+	private void OnLevelSelectBackPressed()
+	{
+		mainMenuContainer.Visible = true;
+		levelSelectScreen.Visible = false;
+	}
 }
