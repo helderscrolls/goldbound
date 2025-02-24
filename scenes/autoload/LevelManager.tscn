@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://1bqtgwhj4vba"]
 
 [ext_resource type="Script" path="res://scenes/autoload/LevelManager.cs" id="1_ts5a8"]
-[ext_resource type="PackedScene" uid="uid://1uj1eiphl7n2" path="res://scenes/level/Level1.tscn" id="2_144l5"]
-[ext_resource type="PackedScene" uid="uid://dcvjc15ngaylj" path="res://scenes/level/Level2.tscn" id="3_g1mww"]
-[ext_resource type="PackedScene" uid="uid://cyusdsm8vkfxw" path="res://scenes/level/Level3.tscn" id="4_tfsyj"]
+[ext_resource type="Resource" uid="uid://b4hq4t7w854ka" path="res://resources/level/level_01.tres" id="2_kg653"]
+[ext_resource type="Resource" uid="uid://dknxulf5p6agu" path="res://resources/level/level_02.tres" id="3_rfiac"]
+[ext_resource type="Resource" uid="uid://bww3iosohwc6t" path="res://resources/level/level_03.tres" id="4_pyksr"]
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_ts5a8")
-levelScenes = Array[PackedScene]([ExtResource("2_144l5"), ExtResource("3_g1mww"), ExtResource("4_tfsyj")])
+levelDefinitions = Array[Object]([ExtResource("2_kg653"), ExtResource("3_rfiac"), ExtResource("4_pyksr")])
